@@ -15,4 +15,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "The job status is ${{ job.status }}."
- 
+  Create-date-file:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/date.yml@main
