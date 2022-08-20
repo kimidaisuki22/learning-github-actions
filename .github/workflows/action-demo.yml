@@ -40,3 +40,23 @@ jobs:
       - name: count words
         run: ./.github/scripts/word_count.sh
         shell: bash
+  producer:
+    name: generate output
+    steps:
+      - shell: bash
+        run: |
+          expr '3+9+3*9' > result.txt
+      - name: upload file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-file
+          path: result.txt
+
+  consumer:
+    runs-on: ubuntu-latest
+    needs:  producer # run after job 'producer' was done.
+    steps:
+      - name: download file
+        uses: actions/download-artifact@v3
+        with:
+          name: output-file
