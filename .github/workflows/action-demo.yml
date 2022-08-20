@@ -35,6 +35,7 @@ jobs:
   use-bash-scripts:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: count words
         run: ./.github/scripts/word_count.sh
         shell: bash
