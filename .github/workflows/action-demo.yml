@@ -42,6 +42,7 @@ jobs:
         shell: bash
   producer:
     name: generate output
+    runs-on: ubuntu-latest
     steps:
       - shell: bash
         run: |
