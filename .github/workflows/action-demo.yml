@@ -15,8 +15,20 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "The job status is ${{ job.status }}."
+  
   Create-date-file:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/date
+  
+  connect-sql-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: connect to sql server
+        run: echo "connection to sql \n $ADDR $USER $PASSWORD"
+        env:
+          ADDR: "localhost:10240"
+          USER: Davi
+          PASSWORD: non-void
+      
