@@ -2,17 +2,17 @@ name: Github Actions Demo
 on: [push]
 jobs:
   Explore-Github-Actions:
-  runs-on: ubuntu-latest
-  steps:
-    - run: echo "This job was automatically triggered by a ${{ github.event_name }} event."
-    - run: echo "on: ${{ runner.os }} "
-    - run: echo "repo -> ${{ github.repository }} \t branch -> ${{ github.ref }} "
-    - name: Check out repository code
-      uses: actions/checkout@v3
-    - run: echo "The ${{ github.repository }} has been cloed to this runner"
-    - run: echo "The workflow is ready to run."
-    - name: List files in the repository
-      run: |
-        ls ${{ github.workspace }}
-    - run: echo "The job status is ${{ job.status }}."
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "on ${{ runner.os }}"
+      - run: echo "repo -> ${{ github.repository }} \t branch -> ${{ github.ref }} "
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "The ${{ github.repository }} has been cloed to this runner"
+      - run: echo "The workflow is ready to run."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "The job status is ${{ job.status }}."
  
