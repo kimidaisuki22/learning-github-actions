@@ -5,7 +5,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
     - run: echo "This job was automatically triggered by a ${{ github.event_name }} event."
-    - run: echo "on: ${{ runner.os }} 
+    - run: echo "on: ${{ runner.os }} "
     - run: echo "repo -> ${{ github.repository }} \t branch -> ${{ github.ref }} "
     - name: Check out repository code
       uses: actions/checkout@v3
@@ -15,3 +15,4 @@ jobs:
       run: |
         ls ${{ github.workspace }}
     - run: echo "The job status is ${{ job.status }}."
+ 
