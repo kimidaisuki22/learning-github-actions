@@ -18,4 +18,4 @@ jobs:
   Create-date-file:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/date.yml
+      - uses: ./.github/action/date
