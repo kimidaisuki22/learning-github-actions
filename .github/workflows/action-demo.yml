@@ -19,4 +19,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/action/date
+      - uses: ./.github/actions/date
