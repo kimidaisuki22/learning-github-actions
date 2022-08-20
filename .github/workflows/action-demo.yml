@@ -32,3 +32,9 @@ jobs:
           USER: Davi
           PASSWORD: non-void
       
+  use-bash-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: count words
+        run: ./.github/scripts/word_count.sh
+        shell: bash
