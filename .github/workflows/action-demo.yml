@@ -15,4 +15,50 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "The job status is ${{ job.status }}."
- 
+  
+  Create-date-file:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/date
+  
+  connect-sql-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: connect to sql server
+        run: echo "connection to sql \n $ADDR $USER $PASSWORD"
+        env:
+          ADDR: "localhost:10240"
+          USER: Davi
+          PASSWORD: non-void
+      
+  use-bash-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: chmod +x ./.github/scripts/*.sh
+      - name: count words
+        run: ./.github/scripts/word_count.sh
+        shell: bash
+  producer:
+    name: generate output
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 9 + 3 * 9 > result.txt
+      - name: upload file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-file
+          path: result.txt
+
+  consumer:
+    runs-on: ubuntu-latest
+    needs:  producer # run after job 'producer' was done.
+    steps:
+      - name: download file
+        uses: actions/download-artifact@v3
+        with:
+          name: output-file
+      - run: cat result.txt

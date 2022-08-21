@@ -1,0 +1,28 @@
+name: print date
+description: print current date, and save to date.txt
+
+inputs:
+  friend-name:
+    description: 'Who you want to date'
+    required: true
+    default: 'void maid'
+
+outputs:
+  random-number:
+    description: 'rng'
+    value:  ${{ steps.rng.output.value }}
+
+runs:
+  using: docker
+  steps:
+    - run: echo "you're date with ${{ inputs.friend-name }}"
+      shell: bash
+    - id: rng
+      run: echo "::set-output name=random-number::$(echo $RANDOM)"
+      shell: bash
+    - run: echo "$(date)" > date.txt
+      shell: bash
+    - run: cat date.txt
+      shell: bash
+    - run: echo "${{ github.action_path }}"
+      shell: bash
