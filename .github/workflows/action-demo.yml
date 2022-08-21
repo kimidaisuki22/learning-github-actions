@@ -46,7 +46,7 @@ jobs:
     steps:
       - shell: bash
         run: |
-          expr '3+9+3*9' > result.txt
+          expr 3 + 9 + 3 * 9 > result.txt
       - name: upload file
         uses: actions/upload-artifact@v3
         with:
