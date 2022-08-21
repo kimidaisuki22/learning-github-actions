@@ -1,13 +1,7 @@
-name: "date"
-description: "save current date to a file."
-inputs:
-  file-path: 
-    despcription: "input file path"
-    required: true
-    default: "addition.txt"
-outputs:
-  results-file:
-    description: "file contianer current date"
-runs:
-  - run: echo "$(date)" > date.txt
-  - run: cat date.txt
+name: print date
+jobs:
+  runs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$(date)" > date.txt
+      - run: cat date.txt
