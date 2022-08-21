@@ -1,2 +1,2 @@
 shopt -s globstar
-wc ./.github/**
+wc ./.github/**/*.*
