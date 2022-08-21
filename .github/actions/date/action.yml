@@ -1,7 +1,25 @@
 name: print date
-jobs:
-  runs:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "$(date)" > date.txt
-      - run: cat date.txt
+description: print current date, and save to date.txt
+
+inputs:
+  friend-name:
+    description: 'Who you want to date'
+    required: true
+    default: 'void maid'
+
+outputs:
+  random-number:
+    description: 'rng'
+    value:  ${{ steps.rng.output.value }}
+
+runs:
+  using: "compsite"
+  steps:
+    - run: echo "you're date with ${{ inputs.friend-name }}"
+      shell: bash
+    - id: rng
+      run: echo "::set-output name=random-number::$(echo $RANDOM)"
+      shell: bash
+    - run: echo "$(date)" > date.txt
+    - run: cat date.txt
+    - run: echo "${{ github.action_path }}"
