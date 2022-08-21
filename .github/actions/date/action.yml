@@ -13,7 +13,7 @@ outputs:
     value:  ${{ steps.rng.output.value }}
 
 runs:
-  using: "compsite"
+  runs-on: ubuntu-latest
   steps:
     - run: echo "you're date with ${{ inputs.friend-name }}"
       shell: bash
